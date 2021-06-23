@@ -2,9 +2,10 @@
     "name":"Awakened Shrub","size":"small","type":"plant","alignment":"unaligned",
     "AC":9,"HP":"3d6","speed":20,
     "STR":3,"DEX":8,"CON":11,"INT":10,"WIS":10,"CHA":6,
-    "DMGVUL":["fire"],"DMGRES":["piercing"],"PSV perception":10,"languages":"^1>creator^","CR":0,
+    "DMGVUL":["fire"],"DMGRES":["piercing"],"PSV perception":10,"languages":"^1>creator^","CR":0,"profBonus":2,
     "PSVAbilities":["False Appearance"],
     "actions":{
-    "Rake":{"type":"Melee Weapon Attack","to hit":1,"reach":5,"target":"target","hit":{"slashing":"1d4 - 1"}}
+    "Rake":{"type":"Melee Weapon Attack","to hit":1,"reach":5,"target":"target","hit":{"slashing":"1d4 - 1"}},
+    "environment":["forest"]
     }
 }
