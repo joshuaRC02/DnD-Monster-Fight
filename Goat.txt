@@ -1,0 +1,3 @@
+hp=4 cr=0 size=medium ac=10 type=beast burrow=0 climb=0 fly=0 swim=0 speed=40 str=12 dex=10 con=11 int=2 wis=10 cha=5 prof=0 blindsight=0 darkvision=0 tremorsense=0 truesight=0 passive=10 vul=0 res=0 imm=0 conimm=0 spellsave=0 spellbonus=0
+1
+MeleeWeaponAttack_tohit=3 reach=5 target#=1 dmgdie=1d4 dmgbonus=1 type=bludgeoning

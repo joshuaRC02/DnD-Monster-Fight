@@ -1,0 +1,3 @@
+hp=3 cr=0 size=tiny ac=10 type=beast burrow=5 climb=0 fly=0 swim=0 speed=20 str=4 dex=11 con=12 int=2 wis=12 cha=5 prof=0 blindsight=0 darkvision=30 tremorsense=0 truesight=0 passive=11 vul=0 res=0 imm=0 conimm=0 spellsave=0 spellbonus=0
+1
+MeleeWeaponAttack_tohit=2 reach=5 target#=1 dmgdie=1d1 dmgbonus=0 type=piercing
