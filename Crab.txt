@@ -1,3 +1,0 @@
-hp=2 cr=0 size=tiny ac=11 type=beast burrow=0 climb=0 fly=0 swim=20 speed=20 str=2 dex=11 con=10 int=1 wis=8 cha=2 prof=stealth blindsight=30 darkvision=0 tremorsense=0 truesight=0 passive=9 vul=0 res=0 imm=0 conimm=0 spellsave=0 spellbonus=0
-1
-MeleeWeaponAttack_tohit=0 reach=5 target#=1 dmgdie=1d1 dmgbonus=0 type=bludgeoning

@@ -1,3 +1,0 @@
-hp=4 cr=0 size=small ac=13 type=beast burrow=0 climb=0 fly=0 swim=0 speed=30 str=8 dex=10 con=12 int=1 wis=7 cha=3 prof=0 blindsight=0 darkvision=0 tremorsense=0 truesight=0 passive=8 vul=0 res=0 imm=0 conimm=0 spellsave=0 spellbonus=0
-1
-MeleeWeaponAttack_tohit=1 reach=5 target#=1 dmgdie=1d6 dmgbonus=-1 type=slashing
