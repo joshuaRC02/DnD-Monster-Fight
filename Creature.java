@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,11 +46,11 @@ public class Creature {
 	private int profBonus;
 	//abilities
 	private List<?> PSVAbilities;
-	private Map<?,?> actions;
+	private Map<Object,Object> actions;
 	//etc
 	private List<?> environment;
-	
 	///combat info
+	private Map<String,Object> defStats;
 	
 	
 
@@ -66,32 +67,40 @@ public class Creature {
         size = (String)info.get("size");
         type = (String)info.get("type");
         alignment = (String)info.get("alignment");
-        AC = ((Double)info.getOrDefault("AC",10)).intValue();
+        AC = ((Double)info.getOrDefault("AC",10.0)).intValue();
         HP = tools.roll((String)info.get("HP"));
         speed = ((Double)info.get("speed")).intValue();
-        STR = ((Double)info.getOrDefault("STR",10)).intValue();
+        STR = ((Double)info.getOrDefault("STR",10.0)).intValue();
         STRMOD = tools.scoreToMod(STR);
-        DEX = ((Double)info.getOrDefault("DEX",10)).intValue();
+        DEX = ((Double)info.getOrDefault("DEX",10.0)).intValue();
         DEXMOD = tools.scoreToMod(DEX);
-        CON = ((Double)info.getOrDefault("CON",10)).intValue();
+        CON = ((Double)info.getOrDefault("CON",10.0)).intValue();
         CONMOD = tools.scoreToMod(CON);
-        INT = ((Double)info.getOrDefault("INT",10)).intValue();
+        INT = ((Double)info.getOrDefault("INT",10.0)).intValue();
         INTMOD = tools.scoreToMod(INT);
-        WIS = ((Double)info.getOrDefault("WIS",10)).intValue();
+        WIS = ((Double)info.getOrDefault("WIS",10.0)).intValue();
         WISMOD = tools.scoreToMod(WIS);
-        CHA = ((Double)info.getOrDefault("CHA",10)).intValue();
+        CHA = ((Double)info.getOrDefault("CHA",10.0)).intValue();
         CHAMOD = tools.scoreToMod(CHA);
         DMGVUL = tools.listToMap((List<?>) info.get("DMGVUL"));
         DMGRES = tools.listToMap((List<?>) info.get("DMGRES"));
         languages = (List<?>) info.get("languauges");
-        CR = ((Double)info.getOrDefault("CR",0)).intValue();
-        profBonus = ((Double)info.getOrDefault("profBonus",2)).intValue();
+        CR = ((Double)info.getOrDefault("CR",0.0)).intValue();
+        profBonus = ((Double)info.getOrDefault("profBonus",2.0)).intValue();
         PSVAbilities = (List<?>) info.get("PSVAbilities");
-        actions = (Map<?, ?>) info.get("actions");
+        actions = (Map<Object, Object>) info.get("actions");
         environment = (List<?>)info.get("environment");
+        
+        //setting up defStats
+        defStats = new HashMap<String,Object>();
+        defStats.put("AC",AC);
+        defStats.put("DMGVUL",DMGVUL);
+        defStats.put("DMGRES",DMGRES);
+        defStats.put("PSVAbilities",PSVAbilities);
+        
     }
     
-    public String info() {
-    	return profBonus+"";
-    }
+    public Map<String,Object> test() {
+    	return Actions.meleeWeaponAttack((Map<Object,Object>)actions.get("Rake"),"none",defStats);
+    }    
 }

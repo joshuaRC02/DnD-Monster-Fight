@@ -5,10 +5,10 @@ import java.util.Random;
 public class tools {
 	public static int roll(String info) {
 		//dealing with the added bit
-		int val = 0;
+		int dmg = 0;
 		if(info.contains("+")) {
-			val+=Integer.parseInt(info.substring(info.indexOf('+')));
-			info = info.substring(0,info.indexOf('+'));
+			dmg+=Integer.parseInt(info.split("\\+")[1]);
+			info = info.split("\\+")[0];
 		}
 		
 		//getting the roll info
@@ -18,18 +18,21 @@ public class tools {
 		
 		//rolling the die
 		Random rand = new Random();
+		int dieDmg = 0;
 		for(int i = 0; i < numOfRolls; i++) {
-			val+= rand.nextInt(die) + 1;
+			dieDmg+=rand.nextInt(die) + 1;
 		}
 		
-		return val; 
+		dmg+=dieDmg;
+		
+		return dmg; 
 	}
-	public static int roll(String info, boolean critical) {
+	public static int roll(String info, boolean crit, double multiplier) {
 		//dealing with the added bit
-		int val = 0;
+		int dmg = 0;
 		if(info.contains("+")) {
-			val+=Integer.parseInt(info.substring(info.indexOf('+')));
-			info = info.substring(0,info.indexOf('+'));
+			dmg+=Integer.parseInt(info.split("\\+")[1]);
+			info = info.split("\\+")[0];
 		}
 		
 		//getting the roll info
@@ -39,14 +42,46 @@ public class tools {
 		
 		//rolling the die
 		Random rand = new Random();
+		int dieDmg = 0;
 		for(int i = 0; i < numOfRolls; i++) {
-			val+= (rand.nextInt(die) + 1) * 2;
+			dieDmg+=rand.nextInt(die) + 1;
 		}
 		
-		return val; 
+		//deealing with critical and adding the dice dmg
+		if(crit) {
+			dieDmg*=2;
+		}
+		dmg+=dieDmg;
+		
+		//dealing with vuln and res with mult
+		dmg*=multiplier;
+				
+				
+		return dmg; 
 	}
 	
+	public static int d20Roll() {
+		return roll("1d20");
+	}
 	
+	public static int d20Roll(String advOrDis) {
+		int atkRoll = roll("1d20");
+		int atkRoll2 = roll("1d20");
+		if((advOrDis.equals("adv") && atkRoll2 > atkRoll) || (advOrDis.equals("dis") && atkRoll2 < atkRoll)) {
+			atkRoll = atkRoll2;
+		}
+		return atkRoll;
+	}
+	
+	public static double defStatsToMult(String dmgType, Map<String,Object> defStats) {
+		double multiplier = 1;
+		if(defStats.containsKey("DMGVUL") && ((Map<String,Object>)defStats.get("DMGVUL")).containsKey("dmgType")) {
+			multiplier*=2;
+		}else if(defStats.containsKey("DMGRES") && ((Map<String,Object>)defStats.get("DMGVUL")).containsKey("dmgType")) {
+			multiplier*=.5;
+		}
+		return multiplier;
+	}
 	
 	public static int scoreToMod(int score) {
 		return (int)Math.floor((score - 10) / 2);

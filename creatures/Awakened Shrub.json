@@ -5,7 +5,7 @@
     "DMGVUL":["fire"],"DMGRES":["piercing"],"PSV perception":10,"languages":"^1>creator^","CR":0,"profBonus":2,
     "PSVAbilities":["False Appearance"],
     "actions":{
-    "Rake":{"type":"Melee Weapon Attack","to hit":1,"reach":5,"target":"target","hit":{"slashing":"1d4 - 1"}},
+    "Rake":{"type":"Melee Weapon Attack","atkBonus":1,"reach":5,"target":"target","dmg":{"slashing":"1d4+-1"}}
+    },
     "environment":["forest"]
-    }
 }
