@@ -37,6 +37,7 @@ public class Creature implements Comparable<Creature>{
 	public List<?> environment;
 	///combat info
 	public Map<String,Object> defStats;
+	public Map<String,Object> atkInfo;
 	
 	
 
@@ -62,73 +63,81 @@ public class Creature implements Comparable<Creature>{
         alignment = (String)info.get("alignment");
         languages = (List<?>) info.get("languauges");
         environment = (List<?>)info.get("environment");
-        CR = ((Double)info.getOrDefault("CR", 0)).intValue();
-        AC = ((Double)info.getOrDefault("AC", 10)).intValue();
-        profBonus = ((Double)info.getOrDefault("profBonus", 2)).intValue();
+        CR = ((Double)info.getOrDefault("CR",0)).intValue();
+        AC = ((Double)info.getOrDefault("AC",10)).intValue();
+        profBonus = ((Double)info.getOrDefault("profBonus",2)).intValue();
         HP = tools.roll((String)info.get("HP"));
-        speed = ((Double)info.getOrDefault("speed", 0)).intValue();
+        speed = ((Double)info.getOrDefault("speed",0)).intValue();
         
         //getting ability score and it's mod and its save
-        STR = ((Double)info.getOrDefault("STR", 10)).intValue();
+        STR = ((Double)info.getOrDefault("STR",10)).intValue();
         STRMOD = tools.scoreToMod(STR);
-        STRSAVE = ((Double)info.getOrDefault("STRSAVE", STRMOD)).intValue();
+        STRSAVE = ((Double)info.getOrDefault("STRSAVE",STRMOD)).intValue();
         DEX = ((Double)info.getOrDefault("DEX", 10)).intValue();
         DEXMOD = tools.scoreToMod(DEX);
-        DEXSAVE = ((Double)info.getOrDefault("DEXSAVE", DEXMOD)).intValue();
+        DEXSAVE = ((Double)info.getOrDefault("DEXSAVE",DEXMOD)).intValue();
         CON = ((Double)info.getOrDefault("CON", 10)).intValue();
         CONMOD = tools.scoreToMod(CON);
         CONSAVE = ((Double)info.getOrDefault("CONSAVE", CONMOD)).intValue();
         INT = ((Double)info.getOrDefault("INT", 10)).intValue();
         INTMOD = tools.scoreToMod(INT);
-        INTSAVE = ((Double)info.getOrDefault("INTSAVE", INTMOD)).intValue();
+        INTSAVE = ((Double)info.getOrDefault("INTSAVE",INTMOD)).intValue();
         WIS = ((Double)info.getOrDefault("WIS", 10)).intValue();
         WISMOD = tools.scoreToMod(WIS);
-        WISSAVE = ((Double)info.getOrDefault("WISSAVE", WISMOD)).intValue();
-        CHA = ((Double)info.getOrDefault("CHA", 10)).intValue();
+        WISSAVE = ((Double)info.getOrDefault("WISSAVE",WISMOD)).intValue();
+        CHA = ((Double)info.getOrDefault("CHA",10)).intValue();
         CHAMOD = tools.scoreToMod(CHA);
-        CHASAVE = ((Double)info.getOrDefault("CHASAVE", CHAMOD)).intValue();
+        CHASAVE = ((Double)info.getOrDefault("CHASAVE",CHAMOD)).intValue();
         
         //getting skills
-        acrobatics = ((Double)info.getOrDefault("acrobatics", DEXMOD)).intValue();
-    	animalHandling = ((Double)info.getOrDefault("animalHandling", WISMOD)).intValue();
-    	arcana = ((Double)info.getOrDefault("arcana", WISMOD)).intValue();
-    	athletics = ((Double)info.getOrDefault("athletics", STRMOD)).intValue();
-    	deception = ((Double)info.getOrDefault("deception", CHAMOD)).intValue();
-    	history = ((Double)info.getOrDefault("history", INTMOD)).intValue();
-    	insight = ((Double)info.getOrDefault("insight", WISMOD)).intValue();
-    	intimidation = ((Double)info.getOrDefault("intimidation", CHAMOD)).intValue();
-    	investigation = ((Double)info.getOrDefault("investigation", INTMOD)).intValue();
-    	medicine = ((Double)info.getOrDefault("medicine", WISMOD)).intValue();
-    	nature = ((Double)info.getOrDefault("nature", INTMOD)).intValue();
-    	perception = ((Double)info.getOrDefault("perception", WISMOD)).intValue();
-    	persuasion = ((Double)info.getOrDefault("persuasion", CHAMOD)).intValue();
-    	religion = ((Double)info.getOrDefault("religion", WISMOD)).intValue();
-    	sleightOfHand = ((Double)info.getOrDefault("sleightOfHand", DEXMOD)).intValue();
-    	stealth = ((Double)info.getOrDefault("stealth", DEXMOD)).intValue();
-    	survival = ((Double)info.getOrDefault("survival", WISMOD)).intValue();
+        acrobatics = ((Double)info.getOrDefault("acrobatics",DEXMOD)).intValue();
+    	animalHandling = ((Double)info.getOrDefault("animalHandling",WISMOD)).intValue();
+    	arcana = ((Double)info.getOrDefault("arcana",WISMOD)).intValue();
+    	athletics = ((Double)info.getOrDefault("athletics",STRMOD)).intValue();
+    	deception = ((Double)info.getOrDefault("deception",CHAMOD)).intValue();
+    	history = ((Double)info.getOrDefault("history",INTMOD)).intValue();
+    	insight = ((Double)info.getOrDefault("insight",WISMOD)).intValue();
+    	intimidation = ((Double)info.getOrDefault("intimidation",CHAMOD)).intValue();
+    	investigation = ((Double)info.getOrDefault("investigation",INTMOD)).intValue();
+    	medicine = ((Double)info.getOrDefault("medicine",WISMOD)).intValue();
+    	nature = ((Double)info.getOrDefault("nature",INTMOD)).intValue();
+    	perception = ((Double)info.getOrDefault("perception",WISMOD)).intValue();
+    	persuasion = ((Double)info.getOrDefault("persuasion",CHAMOD)).intValue();
+    	religion = ((Double)info.getOrDefault("religion",WISMOD)).intValue();
+    	sleightOfHand = ((Double)info.getOrDefault("sleightOfHand",DEXMOD)).intValue();
+    	stealth = ((Double)info.getOrDefault("stealth",DEXMOD)).intValue();
+    	survival = ((Double)info.getOrDefault("survival",WISMOD)).intValue();
         
     	//getting random other crap
         DMGVUL = tools.listToMap((List<?>) info.get("DMGVUL"));
         DMGRES = tools.listToMap((List<?>) info.get("DMGRES"));
-        PSVPerception = ((Double)info.getOrDefault("PSVPerception", 10 + WISMOD)).intValue();
-        initiative = ((Double)info.getOrDefault("initiative", DEXMOD)).intValue();
+        PSVPerception = ((Double)info.getOrDefault("PSVPerception",10+WISMOD)).intValue();
+        initiative = ((Double)info.getOrDefault("initiative",DEXMOD)).intValue();
         PSVAbilities = (List<?>) info.get("PSVAbilities");
         actions = (Map<Object, Object>) info.get("actions");
         
         //setting up defStats
         defStats = new HashMap<String,Object>();
-        defStats.put("AC", AC);
-        defStats.put("DMGVUL", DMGVUL);
-        defStats.put("DMGRES", DMGRES);
-        defStats.put("PSVPerception", PSVPerception);
+        defStats.put("AC",AC);
+        defStats.put("DMGVUL",DMGVUL);
+        defStats.put("DMGRES",DMGRES);
+        defStats.put("PSVPerception",PSVPerception);
         defStats.put("PSVAbilities",PSVAbilities);
-        defStats.put("STRSAVE", STRSAVE);
-        defStats.put("DEXSAVE", DEXSAVE);
-        defStats.put("CONSAVE", CONSAVE);
-        defStats.put("INTSAVE", INTSAVE);
-        defStats.put("WISSAVE", WISSAVE);
-        defStats.put("CHASAVE", CHASAVE);
+        defStats.put("STRSAVE",STRSAVE);
+        defStats.put("DEXSAVE",DEXSAVE);
+        defStats.put("CONSAVE",CONSAVE);
+        defStats.put("INTSAVE",INTSAVE);
+        defStats.put("WISSAVE",WISSAVE);
+        defStats.put("CHASAVE",CHASAVE);
         
+        //setting up atkInfo
+        atkInfo = new HashMap<String,Object>();
+        atkInfo.put("advOrDis", "none");
+        
+    }
+    
+    public boolean isAlive() {
+    	return HP > 0;
     }
     
     public Map<String,Object> test() {

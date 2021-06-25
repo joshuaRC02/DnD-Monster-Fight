@@ -30,6 +30,24 @@ public class Battle {
 		
 		//sorting based on creatures initiative
 		Collections.sort(creatures);
+		ArrayList<Creature> deadCreatures = new ArrayList<Creature>();
+		
+		//the actual battle
+		int turn = 1;
+		while(creatures.size() > 1) {
+			//cycling through each creature on a turn
+			for(int index = 0; index < creatures.size(); index++) {
+				//geting the current creature
+				Creature current = creatures.get(index);
+				//getting all the other creatures
+				ArrayList<Creature> otherCreatures = (ArrayList<Creature>) creatures.clone();
+				otherCreatures.remove(index);
+				
+				//attacking a random creature
+				
+			}
+			turn++;
+		}
 		
 	}
 }
