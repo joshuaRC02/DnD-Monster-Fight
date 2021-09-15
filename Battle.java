@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+//need to redo with different methods and simpler data methods
 public class Battle {
 	public static void battle() {
 		//getting a list to help with choosing
@@ -42,7 +43,6 @@ public class Battle {
 				//getting all the other creatures
 				ArrayList<Creature> otherCreatures = (ArrayList<Creature>) creatures.clone();
 				otherCreatures.remove(index);
-				
 				//attacking a random creature
 				
 			}

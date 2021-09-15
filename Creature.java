@@ -70,10 +70,10 @@ public class Creature implements Comparable<Creature>{
         speed = ((Double)info.getOrDefault("speed",0)).intValue();
         
         //getting ability score and it's mod and its save
-        STR = ((Double)info.getOrDefault("STR",10)).intValue();
+        STR = (int)info.getOrDefault("STR",10);
         STRMOD = tools.scoreToMod(STR);
-        STRSAVE = ((Double)info.getOrDefault("STRSAVE",STRMOD)).intValue();
-        DEX = ((Double)info.getOrDefault("DEX", 10)).intValue();
+        STRSAVE = (int)info.getOrDefault("STRSAVE",STRMOD);
+        DEX = (int)info.getOrDefault("DEX", 10); //change all to like this
         DEXMOD = tools.scoreToMod(DEX);
         DEXSAVE = ((Double)info.getOrDefault("DEXSAVE",DEXMOD)).intValue();
         CON = ((Double)info.getOrDefault("CON", 10)).intValue();
