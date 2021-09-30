@@ -1,7 +1,7 @@
 Had the idea on: 06/19/2020
 Started the coding on: 06/20/2020
 
-Current features: (everythings broken at the moment)
+Current features:
 -pick 2 monsters to fight
 -1 monsters to choose from
 -initial stats automaticaly grabbed
