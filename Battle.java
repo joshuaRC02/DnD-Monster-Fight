@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import jdk.tools.jlink.resources.plugins;
+
 //need to redo with different methods and simpler data methods
 public class Battle {
 	public static void battle() {
@@ -48,6 +50,8 @@ public class Battle {
 			}
 			turn++;
 		}
-		
+	}
+	public static void main(String[] args) {
+		battle();
 	}
 }
